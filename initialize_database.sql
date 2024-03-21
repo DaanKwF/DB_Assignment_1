@@ -1,45 +1,59 @@
 -- Drop table statements
-DROP TABLE IF EXISTS Museum;
+DROP TABLE IF EXISTS Museumzaal;
 DROP TABLE IF EXISTS Item;
 DROP TABLE IF EXISTS Onderzoeksgroep;
 DROP TABLE IF EXISTS Onderzoeker;
 
 -- Entities
-CREATE TABLE Museum (
+CREATE TABLE Museumzaal (
     zaal_id INTEGER,
-    zaal_naam CHAR(64),
+    naam VARCHAR,
     PRIMARY KEY(zaal_id)
 );
 
 CREATE TABLE Item (
-    item_id CHAR(64),
-    item_naam CHAR(64),
+    item_id INTEGER,
+    naam VARCHAR,
     PRIMARY KEY(item_id)
 );
 
 CREATE TABLE Onderzoeksgroep (
     groep_id INTEGER,
-    groep_naam CHAR(64),
+    naam VARCHAR,
     PRIMARY KEY(groep_id)
 );
 
 CREATE TABLE Onderzoeker (
     onderzoeker_id INTEGER,
-    onderzoeker_naam CHAR(64),
-    onderzoeker_functie CHAR(64),
+    naam VARCHAR,
     PRIMARY KEY(onderzoeker_id)
 );
 
-CREATE TABLE Gastonderzoeker (
+CREATE TABLE Gast (
     onderzoeker_id INTEGER,
+    instelling VARCHAR,
+    contract VARCHAR,
+    PRIMARY KEY (onderzoeker_id)
+    FOREIGN KEY (onderzoeker_id) REFERENCES Onderzoeker
+    ON DELETE CASCADE
+);
+
+CREATE TABLE Loondienst (
+    onderzoeker_id INTEGER,
+    salaris REAL,
+    start_datum VARCHAR,
+    contract VARCHAR,
+    PRIMARY KEY (onderzoek_id)
+    FOREIGN KEY (onderzoeker_id) REFERENCES Onderzoeker
+    ON DELETE CASCADE
 );
 
 -- Data
-INSERT INTO Museum VALUES (1, 'Leven');
-INSERT INTO Museum VALUES (2, 'Evolutie');
-INSERT INTO Museum VALUES (3, 'Dinotijd');
-INSERT INTO Museum VALUES (4, 'Dood');
-INSERT INTO Museum VALUES (5, 'LiveScience');
+INSERT INTO Museumzaal VALUES (1, 'Leven');
+INSERT INTO Museumzaal VALUES (2, 'Evolutie');
+INSERT INTO Museumzaal VALUES (3, 'Dinotijd');
+INSERT INTO Museumzaal VALUES (4, 'Dood');
+INSERT INTO Museumzaal VALUES (5, 'LiveScience');
 
 INSERT INTO Item VALUES ('00067A', 'T-Rex');
 INSERT INTO Item VALUES ('02710C', 'Haaietand');
