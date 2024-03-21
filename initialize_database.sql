@@ -21,7 +21,7 @@ CREATE TABLE Tentoonstelling (
 );
 
 CREATE TABLE Item (
-    item_id VARCHAR,
+    item_id INTEGER,
     naam VARCHAR,
     PRIMARY KEY(item_id)
 );
@@ -71,11 +71,12 @@ INSERT INTO Tentoonstelling VALUES (3, 'Superzintuigen');
 INSERT INTO Tentoonstelling VALUES (4, 'Gif');
 INSERT INTO Tentoonstelling VALUES (5, 'T-Rex in Town');
 
-INSERT INTO Item VALUES ('00067A', 'T-Rex');
-INSERT INTO Item VALUES ('02710C', 'Haaietand');
-INSERT INTO Item VALUES ('30027M', 'Alienacanthus');
-INSERT INTO Item VALUES ('86221P', 'Anaconda');
-INSERT INTO Item VALUES ('00481S', 'Calla Lily');
+-- EXTRA ITEMS TOEVOEGEN
+INSERT INTO Item VALUES (1, 'T-Rex');
+INSERT INTO Item VALUES (2, 'Haaietand');
+INSERT INTO Item VALUES (3, 'Alienacanthus');
+INSERT INTO Item VALUES (4, 'Anaconda');
+INSERT INTO Item VALUES (5, 'Calla Lily');
 
 INSERT INTO Onderzoeksgroep VALUES (1, 'Understanding Evolution');
 INSERT INTO Onderzoeksgroep VALUES (2, 'Marine Biodiversity');
@@ -142,16 +143,43 @@ CREATE TABLE Displays (
     FOREIGN KEY(item_id) REFERENCES Item,
 );
 
+-- Data
+INSERT INTO Begeleidt VALUES (1, 1);
+INSERT INTO Begeleidt VALUES (2, 3);
+INSERT INTO Begeleidt VALUES (3, 5);
+INSERT INTO Begeleidt VALUES (4, 5);
+INSERT INTO Begeleidt VALUES (5, 3);
 
+-- SINDS NOG TOEVOEGEN
+INSERT INTO Onderzoekt VALUES (3, 2, );
+INSERT INTO Onderzoekt VALUES (4, 4, );
+INSERT INTO Onderzoekt VALUES (4, 1, );
+INSERT INTO Onderzoekt VALUES (5, 3, );
+INSERT INTO Onderzoekt VALUES (2, 2, );
 
-INSERT INTO VALUES ();
-INSERT INTO VALUES ();
-INSERT INTO VALUES ();
-INSERT INTO VALUES ();
-INSERT INTO VALUES ();
+-- SINDS NOG TOEVOEGEN
+INSERT INTO Werkt_Bij VALUES (1, 3, );
+INSERT INTO Werkt_Bij VALUES (2, 1, );
+INSERT INTO Werkt_Bij VALUES (3, 4, );
+INSERT INTO Werkt_Bij VALUES (4, 2, );
+INSERT INTO Werkt_Bij VALUES (5, 5, );
 
-INSERT INTO VALUES ();
-INSERT INTO VALUES ();
-INSERT INTO VALUES ();
-INSERT INTO VALUES ();
-INSERT INTO VALUES ();
+INSERT INTO Hosts VALUES (5, 1);
+INSERT INTO Hosts VALUES (5, 2);
+INSERT INTO Hosts VALUES (1, 3);
+INSERT INTO Hosts VALUES (4, 4);
+INSERT INTO Hosts VALUES (3, 5);
+
+-- START- EN EINDDATUM NOG TOEVOEGEN
+INSERT INTO Displays VALUES ();
+INSERT INTO Displays VALUES ();
+INSERT INTO Displays VALUES ();
+INSERT INTO Displays VALUES ();
+INSERT INTO Displays VALUES ();
+
+-- SINDS NOG TOEVOEGEN
+INSERT INTO Samenwerking VALUES ();
+INSERT INTO Samenwerking VALUES ();
+INSERT INTO Samenwerking VALUES ();
+INSERT INTO Samenwerking VALUES ();
+INSERT INTO Samenwerking VALUES ();
