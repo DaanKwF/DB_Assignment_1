@@ -48,6 +48,12 @@ CREATE TABLE Loondienst (
     ON DELETE CASCADE
 );
 
+CREATE TABLE Tentoonstelling (
+    tentoonstelling_id INTEGER,
+    naam VARCHAR,
+    PRIMARY KEY (tentoonstelling_id)
+);
+
 -- Data
 INSERT INTO Museumzaal VALUES (1, 'Leven');
 INSERT INTO Museumzaal VALUES (2, 'Evolutie');
@@ -72,6 +78,12 @@ INSERT INTO Onderzoeker VALUES (2);
 INSERT INTO Onderzoeker VALUES (3);
 INSERT INTO Onderzoeker VALUES (4, '');
 INSERT INTO Onderzoeker VALUES (5, 'Ton de Winter', 'gast');
+
+INSERT INTO Tentoonstelling VALUES (1, 'Prepareren van dieren en planten');
+INSERT INTO Tentoonstelling VALUES (2, 'Naturalis Nu!');
+INSERT INTO Tentoonstelling VALUES (3, 'Superzintuigen');
+INSERT INTO Tentoonstelling VALUES (4, 'Gif');
+INSERT INTO Tentoonstelling VALUES (5, 'T-Rex in town');
 
 INSERT INTO VALUES ();
 INSERT INTO VALUES ();
