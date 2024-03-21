@@ -52,7 +52,7 @@ CREATE TABLE Loondienst (
     onderzoeker_id INTEGER,
     contract VARCHAR,
     salaris REAL,
-    start_datum DATE,
+    sinds DATE,
     PRIMARY KEY (onderzoek_id)
     FOREIGN KEY (onderzoeker_id) REFERENCES Onderzoeker
     ON DELETE CASCADE
