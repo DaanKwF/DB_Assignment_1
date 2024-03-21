@@ -124,6 +124,25 @@ CREATE TABLE Werkt_Bij (
     FOREIGN KEY(onderzoeker_id) REFERENCES Onderzoeker,
     FOREIGN KEY(groep_id) REFERENCES Onderzoeksgroep,
 );
+CREATE TABLE Hosts (
+    zaal_id INTEGER not NULL,
+    tentoonstelling_id INTEGER,
+    PRIMARY KEY(zaal_id, tentoonstelling_id),
+    FOREIGN KEY(zaal_id) REFERENCES Museumzaal,
+    FOREIGN KEY(tentoonstelling_id) REFERENCES Tentoonstelling,
+);
+
+CREATE TABLE Displays (
+    zaal_id INTEGER,
+    item_id INTEGER,
+    start_datum DATE,
+    eind_datum DATE,
+    PRIMARY KEY(zaal_id, item_id),
+    FOREIGN KEY(zaal_id) REFERENCES Museumzaal,
+    FOREIGN KEY(item_id) REFERENCES Item,
+);
+
+
 
 INSERT INTO VALUES ();
 INSERT INTO VALUES ();
