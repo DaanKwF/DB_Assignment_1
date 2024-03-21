@@ -143,6 +143,15 @@ CREATE TABLE Displays (
     FOREIGN KEY(item_id) REFERENCES Item,
 );
 
+CREATE TABLE Samenwerking (
+    groep1_id INTEGER,
+    groep2_id INTEGER,
+    sinds DATE,
+    PRIMARY KEY (groep1_id, groep2_id),
+    FOREIGN KEY (groep1_id) REFERENCES Onderzoeksgroep(groep_id),
+    FOREIGN KEY (groep2_id) REFERENCES Onderzoeksgroep(groep_id)
+);
+
 -- Data
 INSERT INTO Begeleidt VALUES (1, 1);
 INSERT INTO Begeleidt VALUES (2, 3);
