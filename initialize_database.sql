@@ -98,6 +98,15 @@ INSERT INTO Gast Values(4, 'Google', 'voltijd');
 INSERT INTO Onderzoeker VALUES (5, 'Ton de Winter', 'Gastonderzoeker');
 INSERT INTO Gast Values(5, 'University of Costa Rica', 'deeltijd');
 
+-- Relationships
+CREATE TABLE Begeleidt (
+    tentoonstelling_id INTEGER,
+    onderzoeker_id INTEGER not NULL,
+    PRIMARY KEY(tentoonstelling_id, onderzoeker_id),
+    FOREIGN KEY(tentoonstelling_id) REFERENCES Tentoonstelling,
+    FOREIGN KEY(onderzoeker_id) REFERENCES Onderzoeker,
+);
+
 INSERT INTO VALUES ();
 INSERT INTO VALUES ();
 INSERT INTO VALUES ();
