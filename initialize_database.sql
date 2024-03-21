@@ -100,11 +100,29 @@ INSERT INTO Gast Values(5, 'University of Costa Rica', 'deeltijd');
 
 -- Relationships
 CREATE TABLE Begeleidt (
-    tentoonstelling_id INTEGER,
     onderzoeker_id INTEGER not NULL,
+    tentoonstelling_id INTEGER,
     PRIMARY KEY(tentoonstelling_id, onderzoeker_id),
     FOREIGN KEY(tentoonstelling_id) REFERENCES Tentoonstelling,
     FOREIGN KEY(onderzoeker_id) REFERENCES Onderzoeker,
+);
+
+CREATE TABLE Onderzoekt (
+    groep_id INTEGER,
+    item_id INTEGER,
+    sinds DATE,
+    PRIMARY KEY(groep_id, item_id),
+    FOREIGN KEY(groep_id) REFERENCES Onderzoeksgroep,
+    FOREIGN KEY(item_id) REFERENCES Item,
+);
+
+CREATE TABLE Werkt_Bij (
+    onderzoeker_id INTEGER not NULL,
+    groep_id INTEGER not NULL,
+    sinds DATE,
+    PRIMARY KEY(onderzoeker_id, groep_id),
+    FOREIGN KEY(onderzoeker_id) REFERENCES Onderzoeker,
+    FOREIGN KEY(groep_id) REFERENCES Onderzoeksgroep,
 );
 
 INSERT INTO VALUES ();
