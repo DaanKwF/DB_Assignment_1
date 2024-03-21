@@ -12,7 +12,7 @@ CREATE TABLE Museumzaal (
 );
 
 CREATE TABLE Item (
-    item_id INTEGER,
+    item_id VARCHAR,
     naam VARCHAR,
     PRIMARY KEY(item_id)
 );
