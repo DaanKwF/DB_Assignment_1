@@ -75,12 +75,11 @@ INSERT INTO Museumzaal VALUES (3, 'Dinotijd');
 INSERT INTO Museumzaal VALUES (4, 'Dood');
 INSERT INTO Museumzaal VALUES (5, 'LiveScience');
 
--- TODO DATA TOEVOEGEN
-INSERT INTO Tentoonstelling VALUES (1, 'Prepareren van Dieren en Planten');
-INSERT INTO Tentoonstelling VALUES (2, 'Naturalis Nu!');
-INSERT INTO Tentoonstelling VALUES (3, 'Superzintuigen');
-INSERT INTO Tentoonstelling VALUES (4, 'Gif');
-INSERT INTO Tentoonstelling VALUES (5, 'T-Rex in Town');
+INSERT INTO Tentoonstelling VALUES (1, 'Prepareren van Dieren en Planten', 2023-01-01, 2023-11-18);
+INSERT INTO Tentoonstelling VALUES (2, 'Naturalis Nu!', 2021-05-17, 2023-08-30);
+INSERT INTO Tentoonstelling VALUES (3, 'Superzintuigen', 2022-04-01, NULL);
+INSERT INTO Tentoonstelling VALUES (4, 'Gif', 2018-09-01, NULL);
+INSERT INTO Tentoonstelling VALUES (5, 'T-Rex in Town', 2006-01-01, NULL);
 
 INSERT INTO Item VALUES (1, 'T-Rex');
 INSERT INTO Item VALUES (2, 'Haaietand');
@@ -194,14 +193,12 @@ INSERT INTO Hosts VALUES (1, 3);
 INSERT INTO Hosts VALUES (4, 4);
 INSERT INTO Hosts VALUES (3, 5);
 
--- START- EN EINDDATUM NOG TOEVOEGEN
 INSERT INTO Displays VALUES (1, 4, 2010-02-07, NULL);
 INSERT INTO Displays VALUES (2, 8, 2015-01-18, NULL);
 INSERT INTO Displays VALUES (3, 1, 2005-06-01, NULL);
 INSERT INTO Displays VALUES (4, 2, 2016-08-09, NULL);
 INSERT INTO Displays VALUES (5, 11, 2023-02-01, 2023-02-15);
 
--- SINDS NOG TOEVOEGEN
 INSERT INTO Samenwerking VALUES (1, 5, 2022-04-08);
 INSERT INTO Samenwerking VALUES (1, 4, 2019-08-20);
 INSERT INTO Samenwerking VALUES (2, 5, 2021-01-16);
