@@ -53,7 +53,7 @@ CREATE TABLE Gast (
     onderzoeker_id INTEGER,
     instelling VARCHAR,
     contract VARCHAR,
-    PRIMARY KEY (onderzoeker_id)
+    PRIMARY KEY (onderzoeker_id),
     FOREIGN KEY (onderzoeker_id) REFERENCES Onderzoeker
     ON DELETE CASCADE
 );
@@ -63,7 +63,7 @@ CREATE TABLE Loondienst (
     contract VARCHAR,
     salaris REAL,
     sinds DATE,
-    PRIMARY KEY (onderzoek_id)
+    PRIMARY KEY (onderzoeker_id),
     FOREIGN KEY (onderzoeker_id) REFERENCES Onderzoeker
     ON DELETE CASCADE
 );
@@ -100,13 +100,13 @@ INSERT INTO Onderzoeksgroep VALUES (4, 'Functional Traits');
 INSERT INTO Onderzoeksgroep VALUES (5, 'Evolutie, Ontwikkeling en Ecologie van Gewervelden');
 
 INSERT INTO Onderzoeker VALUES (1, 'Roxali Bijmoer', 'Collectiebeheer Botanie');
-INSERT INTO Loondienst VALUES (1, 'voltijd', 40000, 2018-03-01)
+INSERT INTO Loondienst VALUES (1, 'voltijd', 40000, 2018-03-01);
 
 INSERT INTO Onderzoeker VALUES (2, 'Matyas Bittenbinder', 'PhD Candidate');
-INSERT INTO Loondienst VALUES (2, 'deeltijd', 25000, 2023-09-01)
+INSERT INTO Loondienst VALUES (2, 'deeltijd', 25000, 2023-09-01);
 
 INSERT INTO Onderzoeker VALUES (3, 'Herman de Jong', 'Senior Onderzoeker');
-INSERT INTO Loondienst VALUES (3, 'voltijd', 75000, 1980-01-01)
+INSERT INTO Loondienst VALUES (3, 'voltijd', 75000, 1980-01-01);
 
 INSERT INTO Onderzoeker VALUES (4, 'Pim Arntzen', 'Gastonderzoeker');
 INSERT INTO Gast Values(4, 'Google', 'voltijd');
@@ -120,7 +120,7 @@ CREATE TABLE Begeleidt (
     tentoonstelling_id INTEGER,
     PRIMARY KEY(tentoonstelling_id, onderzoeker_id),
     FOREIGN KEY(tentoonstelling_id) REFERENCES Tentoonstelling,
-    FOREIGN KEY(onderzoeker_id) REFERENCES Onderzoeker,
+    FOREIGN KEY(onderzoeker_id) REFERENCES Onderzoeker
 );
 
 CREATE TABLE Onderzoekt (
@@ -129,7 +129,7 @@ CREATE TABLE Onderzoekt (
     sinds DATE,
     PRIMARY KEY(groep_id, item_id),
     FOREIGN KEY(groep_id) REFERENCES Onderzoeksgroep,
-    FOREIGN KEY(item_id) REFERENCES Item,
+    FOREIGN KEY(item_id) REFERENCES Item
 );
 
 CREATE TABLE Werkt_Bij (
@@ -138,7 +138,7 @@ CREATE TABLE Werkt_Bij (
     sinds DATE,
     PRIMARY KEY(onderzoeker_id, groep_id),
     FOREIGN KEY(onderzoeker_id) REFERENCES Onderzoeker,
-    FOREIGN KEY(groep_id) REFERENCES Onderzoeksgroep,
+    FOREIGN KEY(groep_id) REFERENCES Onderzoeksgroep
 );
 
 CREATE TABLE Hosts (
@@ -146,7 +146,7 @@ CREATE TABLE Hosts (
     tentoonstelling_id INTEGER,
     PRIMARY KEY(zaal_id, tentoonstelling_id),
     FOREIGN KEY(zaal_id) REFERENCES Museumzaal,
-    FOREIGN KEY(tentoonstelling_id) REFERENCES Tentoonstelling,
+    FOREIGN KEY(tentoonstelling_id) REFERENCES Tentoonstelling
 );
 
 CREATE TABLE Displays (
@@ -156,7 +156,7 @@ CREATE TABLE Displays (
     eind_datum DATE,
     PRIMARY KEY(zaal_id, item_id),
     FOREIGN KEY(zaal_id) REFERENCES Museumzaal,
-    FOREIGN KEY(item_id) REFERENCES Item,
+    FOREIGN KEY(item_id) REFERENCES Item
 );
 
 CREATE TABLE Samenwerking (
@@ -197,7 +197,7 @@ INSERT INTO Displays VALUES (1, 4, 2010-02-07, NULL);
 INSERT INTO Displays VALUES (1, 3, 2012-05-03, NULL);
 INSERT INTO Displays VALUES (1, 7, 2013-11-11, NULL);
 INSERT INTO Displays VALUES (2, 6, 2020-03-02, NULL);
-INSERT INTO Displays VALUES (2, 8, 2015-01-18, NULL);
+INSERT INTO Displays VALUES (2, 9, 2015-01-18, NULL);
 INSERT INTO Displays VALUES (2, 8, 2010-06-01, 2020-11-01);
 INSERT INTO Displays VALUES (3, 1, 2005-06-01, NULL);
 INSERT INTO Displays VALUES (4, 2, 2016-08-09, NULL);
