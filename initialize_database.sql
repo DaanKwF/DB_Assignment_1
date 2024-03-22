@@ -7,6 +7,14 @@ DROP TABLE IF EXISTS Onderzoeker;
 DROP TABLE IF EXISTS Gast;
 DROP TABLE IF EXISTS Loondienst;
 
+DROP TABLE IF EXISTS Begeleidt;
+DROP TABLE IF EXISTS Onderzoekt;
+DROP TABLE IF EXISTS Werkt_Bij;
+DROP TABLE IF EXISTS Hosts;
+DROP TABLE IF EXISTS Displays;
+DROP TABLE IF EXISTS Samenwerking;
+
+
 -- Entities
 CREATE TABLE Museumzaal (
     zaal_id INTEGER,
@@ -16,6 +24,8 @@ CREATE TABLE Museumzaal (
 
 CREATE TABLE Tentoonstelling (
     tentoonstelling_id INTEGER,
+    start_datum DATE,
+    eind_datum DATE,
     naam VARCHAR,
     PRIMARY KEY (tentoonstelling_id)
 );
@@ -65,18 +75,24 @@ INSERT INTO Museumzaal VALUES (3, 'Dinotijd');
 INSERT INTO Museumzaal VALUES (4, 'Dood');
 INSERT INTO Museumzaal VALUES (5, 'LiveScience');
 
+-- TODO DATA TOEVOEGEN
 INSERT INTO Tentoonstelling VALUES (1, 'Prepareren van Dieren en Planten');
 INSERT INTO Tentoonstelling VALUES (2, 'Naturalis Nu!');
 INSERT INTO Tentoonstelling VALUES (3, 'Superzintuigen');
 INSERT INTO Tentoonstelling VALUES (4, 'Gif');
 INSERT INTO Tentoonstelling VALUES (5, 'T-Rex in Town');
 
--- EXTRA ITEMS TOEVOEGEN
 INSERT INTO Item VALUES (1, 'T-Rex');
 INSERT INTO Item VALUES (2, 'Haaietand');
 INSERT INTO Item VALUES (3, 'Alienacanthus');
 INSERT INTO Item VALUES (4, 'Anaconda');
 INSERT INTO Item VALUES (5, 'Calla Lily');
+INSERT INTO Item VALUES (6, 'Australisch Slakkenhuis');
+INSERT INTO Item VALUES (7, 'Panthera Leo Persica');
+INSERT INTO Item VALUES (8, 'Geospiza Parvula');
+INSERT INTO Item VALUES (9, 'Dendrogyra cylindrus');
+INSERT INTO Item VALUES (10, 'Dionaea muscipula');
+INSERT INTO Item VALUES (11, 'Turdus merula');
 
 INSERT INTO Onderzoeksgroep VALUES (1, 'Understanding Evolution');
 INSERT INTO Onderzoeksgroep VALUES (2, 'Marine Biodiversity');
@@ -125,6 +141,7 @@ CREATE TABLE Werkt_Bij (
     FOREIGN KEY(onderzoeker_id) REFERENCES Onderzoeker,
     FOREIGN KEY(groep_id) REFERENCES Onderzoeksgroep,
 );
+
 CREATE TABLE Hosts (
     zaal_id INTEGER not NULL,
     tentoonstelling_id INTEGER,
@@ -187,8 +204,6 @@ INSERT INTO Displays VALUES ();
 INSERT INTO Displays VALUES ();
 
 -- SINDS NOG TOEVOEGEN
-INSERT INTO Samenwerking VALUES ();
-INSERT INTO Samenwerking VALUES ();
-INSERT INTO Samenwerking VALUES ();
-INSERT INTO Samenwerking VALUES ();
-INSERT INTO Samenwerking VALUES ();
+INSERT INTO Samenwerking VALUES (1, 5, 2022-04-08);
+INSERT INTO Samenwerking VALUES (1, 4, 2019-08-20);
+INSERT INTO Samenwerking VALUES (2, 5, 2021-01-16);
