@@ -4,12 +4,12 @@
 -- Group: Enrol in a 3-member group on Brightspace by the 23rd of February.
 -- Groups with fewer than 3 students will be merged together after the deadline.
 -- To form a group, we encourage you to discuss in-person with your colleagues,
--- use the Brightspace discussion forum, or if you wish to be assigned a group randomly, please send an email to: databases@liacs.leidenuniv.nl with the subject
+-- use the Brightspace discussion forum, or if you wish to be assigned a group randomly, please send an email to: databases@liacs.leidenuniv.nl with the subject
 -- “[Group assignment] Random group”.
 -- In this group assignment, you will design and use your own database in SQLite.
 -- The general idea is to demonstrate the use of a relational database, following
 -- the 4-steps database design process:
--- 1) Requirements list (statements in natural language about the data organization)
+-- 1) Requirements list (statements in natural language about the data organization)
 -- 2) ER Diagram
 -- 3) Translation to SQL-DDL
 -- 4) Example queries
@@ -32,7 +32,7 @@
 -- 10:45, we will check your understanding of this submission by conducting 10-
 -- minute interviews. Closer to the date, we will post a spreadsheet with your
 -- group’s time-slot. The interview is mandatory yet it is not graded. We wish
--- to make sure each team member has a good understanding of the solution submitted, and bonus, you get to train your explanation skills which is relevant for
+-- to make sure each team member has a good understanding of the solution submitted, and bonus, you get to train your explanation skills which is relevant for
 -- your future job! In case a team (member) fails to show understanding during
 -- the interview session, we will provide you with a “resit” opportunity, but then
 -- your maximum assignment grade is 5.5. Note that this resit only applies to the
@@ -42,7 +42,7 @@
 -- Tip: We encourage you to work on the group assignment on a weekly basis,
 -- following the course material.
 -- LIACS · Group assignment 05.02.24
--- 1) [16p ] Write a list of 10 requirements for your database. These are statements in natural language about the data organization.
+-- 1) [16p ] Write a list of 10 requirements for your database. These are statements in natural language about the data organization.
 -- 2) [24p ] Translate your requirements to an ER Diagram.
 -- Make sure to include at least 1 example of each of the following:
 -- i. IS-A hierarchy with COVER/OVERLAP constraint
@@ -53,8 +53,8 @@
 -- please update your list of requirements in the previous exercise.
 -- (Bonus, 2p) Include aggregation or ternary relation.
 -- 3) [26p ] Translate the ER Diagram to SQL-DDL.
--- Add example data to your solution using SQL INSERT value statements. Around 5 rows per table is sufficient.
--- Note: Check out the material on Brightspace on how to translate selfjoins to SQL-DDL.
+-- Add example data to your solution using SQL INSERT value statements. Around 5 rows per table is sufficient.
+-- Note: Check out the material on Brightspace on how to translate selfjoins to SQL-DDL.
 -- (Bonus, 2p) Include the translation of aggregation or ternary relation.
 -- Could you capture all the constraints? If you cannot capture some
 -- constraints, explain why.
@@ -62,21 +62,32 @@
 -- one example of each of the following:
 -- 	i. GROUP BY… HAVING
 -- 		a. Number of items in the museum that are being researched, grouped by Museumzaal
-SELECT *
-FROM Museumzaal M;
 
-SELECT *
-FROM Displays D;
+-- SELECT COUNT(I.item_id) as number_of_items
+-- FROM Item I, Museumzaal M, Displays D, Onderzoekt O
+-- WHERE I.item_id = D.item_id and D.zaal_id = M.zaal_id AND I.item_id = O.item_id
+-- GROUP BY M.naam
+-- HAVING M.naam <> 'Dood';
 
-
-SELECT M.zaal_id, M.zaal_naam, SUM(I.item_id) as number_of_items
+SELECT M.naam, COUNT(I.item_id) as number_of_items
 FROM Item I, Museumzaal M, Displays D, Onderzoekt O
-WHERE I.item_id = D.item_id = O.item_id and D.zaal_id = M.zaal_id --and I.item_id = O.item_id
-GROUP BY M.zaal_naam
-HAVING M.zaal_naam <> 'LiveScience';
+WHERE I.item_id = D.item_id and D.zaal_id = M.zaal_id AND I.item_id = O.item_id
+GROUP BY M.naam
+HAVING M.naam <> 'Dood';
+
 
 -- 	ii. Set operation (UNION, INTERSECT, EXCEPT)
 -- 		a. All items that are not used at all. What in storage?
+
+SELECT I.item_id
+FROM Item I
+
+EXCEPT 
+
+SELECT I.item_id
+FROM Item I, Displays D
+WHERE I.item_id = D.item_id;
+
 -- 	iii. Nested query or correlation (4a, slide 18)
 -- 		a. Voltijds onderzoekers die onderdeel zijn van de Onderzoeksgroep Marine Biodiversity
 -- 	iv. Aggregation (MAX, AVERAGE, SUM, COUNT)
