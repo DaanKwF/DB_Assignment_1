@@ -107,6 +107,7 @@ INSERT INTO Item VALUES (8, 'Geospiza Parvula');
 INSERT INTO Item VALUES (9, 'Dendrogyra cylindrus');
 INSERT INTO Item VALUES (10, 'Dionaea muscipula');
 INSERT INTO Item VALUES (11, 'Turdus merula');
+INSERT INTO Item VALUES (12, 'Calla Zantedeschia');
 
 INSERT INTO Onderzoeksgroep VALUES (1, 'Understanding Evolution');
 INSERT INTO Onderzoeksgroep VALUES (2, 'Marine Biodiversity');
@@ -213,7 +214,7 @@ INSERT INTO Begeleidt VALUES (3, 5);
 INSERT INTO Begeleidt VALUES (4, 5);
 INSERT INTO Begeleidt VALUES (5, 3);
 
-INSERT INTO Onderzoekt VALUES (3, 2, '2023-04-23');
+INSERT INTO Onderzoekt VALUES (2, 3, '2023-04-23');
 INSERT INTO Onderzoekt VALUES (4, 4, '2015-07-05');
 INSERT INTO Onderzoekt VALUES (4, 1, '2018-09-28');
 INSERT INTO Onderzoekt VALUES (5, 3, '2010-01-10');

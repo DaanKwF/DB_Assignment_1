@@ -104,9 +104,43 @@ WHERE G.onderzoeker_id = L.onderzoeker_id;
 
 -- Query over multiple tables (JOIN)
 -- vi. LIKE (string matching)
+
+SELECT I.naam
+FROM Item I
+WHERE I.naam LIKE 'Calla%';
+
 -- Please specify distinct queries for each category. Otherwise, we will
 -- only score one of the categories.
 -- For each query, please briefly explain what it computes. Without an
 -- explanation, you will not earn any points for that query.
 -- (Bonus#1,3p) Is there a challenging query you wish to show us?
+
+Welke items in welke zalen worden onderzocht door groepen van Herman?
+
+SELECT M.naam, I.naam, T.groep_id, O.sinds
+FROM Museumzaal M, Item I, Displays D, T T, Onderzoekt O
+WHERE M.zaal_id = D.zaal_id and I.item_id = D.item_id and I.item_id = O.item_id and I.item_id IN 
+    (
+    CREATE TABLE T AS
+    SELECT O.item_id, O.groep_id 
+    FROM Onderzoekt O
+    WHERE O.groep_id IN 
+        (
+        SELECT W.groep_id
+        FROM Werkt_Bij W
+        WHERE W.onderzoeker_id = 3
+        )
+    )
+;
+
+SELECT M.naam, I.naam, O.groep_id, G.naam, O.sinds
+FROM Museumzaal M, Item I, Displays D, Onderzoekt O, Onderzoeksgroep G
+WHERE G.groep_id = O.groep_id and M.zaal_id = D.zaal_id and I.item_id = D.item_id and I.item_id = O.item_id and O.groep_id IN (
+        SELECT W.groep_id
+        FROM Werkt_Bij W
+        WHERE W.onderzoeker_id = 3
+        )
+;
+
+
 -- (Bonus#2,3p) Is there a challenging query you wish to show us?
