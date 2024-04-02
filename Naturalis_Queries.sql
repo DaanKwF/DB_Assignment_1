@@ -63,12 +63,6 @@
 -- 	i. GROUP BY… HAVING
 -- 		a. Number of items in the museum that are being researched, grouped by Museumzaal
 
--- SELECT COUNT(I.item_id) as number_of_items
--- FROM Item I, Museumzaal M, Displays D, Onderzoekt O
--- WHERE I.item_id = D.item_id and D.zaal_id = M.zaal_id AND I.item_id = O.item_id
--- GROUP BY M.naam
--- HAVING M.naam <> 'Dood';
-
 SELECT M.naam, COUNT(I.item_id) as number_of_items
 FROM Item I, Museumzaal M, Displays D, Onderzoekt O
 WHERE I.item_id = D.item_id and D.zaal_id = M.zaal_id AND I.item_id = O.item_id
@@ -92,6 +86,11 @@ WHERE I.item_id = D.item_id;
 -- 		a. Voltijds onderzoekers die onderdeel zijn van de Onderzoeksgroep Marine Biodiversity
 -- 	iv. Aggregation (MAX, AVERAGE, SUM, COUNT)
 -- 		a. Aantal maal data gedeeld door Onderzoeksgroep Tropical Botany
+
+SELECT COUNT(DISTINCT G.onderzoeker_id)
+FROM Gast G, Geeft_Lezing L
+WHERE G.onderzoeker_id = L.onderzoeker_id;
+
 -- Query over multiple tables (JOIN)
 -- vi. LIKE (string matching)
 -- Please specify distinct queries for each category. Otherwise, we will
