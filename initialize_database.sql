@@ -26,9 +26,9 @@ CREATE TABLE Museumzaal (
 
 CREATE TABLE Tentoonstelling (
     tentoonstelling_id INTEGER,
+    naam VARCHAR,
     start_datum DATE,
     eind_datum DATE,
-    naam VARCHAR,
     PRIMARY KEY (tentoonstelling_id)
 );
 
@@ -144,8 +144,8 @@ INSERT INTO Conferentie VALUES (5, 'Tropical Plant Expo', 'Miami');
 
 -- Relationships
 CREATE TABLE Begeleidt (
-    onderzoeker_id INTEGER not NULL,
-    tentoonstelling_id INTEGER,
+    tentoonstelling_id INTEGER not NULL,
+    onderzoeker_id INTEGER,
     PRIMARY KEY(tentoonstelling_id, onderzoeker_id),
     FOREIGN KEY(tentoonstelling_id) REFERENCES Tentoonstelling,
     FOREIGN KEY(onderzoeker_id) REFERENCES Onderzoeker
