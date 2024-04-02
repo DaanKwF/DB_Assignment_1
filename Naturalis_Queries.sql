@@ -103,6 +103,13 @@ FROM Gast G, Geeft_Lezing L
 WHERE G.onderzoeker_id = L.onderzoeker_id;
 
 -- Query over multiple tables (JOIN)
+
+SELECT O.onderzoeker_id
+FROM Onderzoeker O
+INNER JOIN Begeleidt B ON O.onderzoeker_id = B.onderzoeker_id
+INNER JOIN Tentoonstelling T ON B.tentoonstelling_id = T.tentoonstelling_id
+WHERE T.naam = 'Gif';
+
 -- vi. LIKE (string matching)
 
 SELECT I.naam
@@ -115,7 +122,7 @@ WHERE I.naam LIKE 'Calla%';
 -- explanation, you will not earn any points for that query.
 -- (Bonus#1,3p) Is there a challenging query you wish to show us?
 
-Welke items in welke zalen worden onderzocht door groepen van Herman?
+-- Welke items in welke zalen worden onderzocht door groepen van Herman?
 
 SELECT M.naam, I.naam, O.groep_id, G.naam, O.sinds
 FROM Museumzaal M, Item I, Displays D, Onderzoekt O, Onderzoeksgroep G
@@ -128,3 +135,9 @@ WHERE G.groep_id = O.groep_id and M.zaal_id = D.zaal_id and I.item_id = D.item_i
 
 
 -- (Bonus#2,3p) Is there a challenging query you wish to show us?
+
+SELECT O.onderzoeker_id
+FROM Onderzoeker O
+INNER JOIN Begeleidt B ON O.onderzoeker_id = B.onderzoeker_id
+INNER JOIN Tentoonstelling T ON B.tentoonstelling_id = T.tentoonstelling_id
+WHERE T.naam = 'Gif';
