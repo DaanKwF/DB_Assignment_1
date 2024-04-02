@@ -84,6 +84,17 @@ WHERE I.item_id = D.item_id;
 
 -- 	iii. Nested query or correlation (4a, slide 18)
 -- 		a. Voltijds onderzoekers die onderdeel zijn van de Onderzoeksgroep Marine Biodiversity
+
+SELECT O.naam, L.sinds, L.contract
+FROM Loondienst L, Onderzoeker O
+WHERE L.onderzoeker_id = O.onderzoeker_id and L.onderzoeker_id IN (
+    SELECT W.onderzoeker_id
+    FROM Werkt_Bij W
+    WHERE W.groep_id = 2
+    )    
+;
+
+
 -- 	iv. Aggregation (MAX, AVERAGE, SUM, COUNT)
 -- 		a. Aantal maal data gedeeld door Onderzoeksgroep Tropical Botany
 
