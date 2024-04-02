@@ -203,7 +203,7 @@ CREATE TABLE Geeft_Lezing (
     PRIMARY KEY(onderzoeker_id, paper_id, conferentie_id),
     FOREIGN KEY(onderzoeker_id) REFERENCES Onderzoeker,
     FOREIGN KEY(paper_id) REFERENCES Paper,
-    FOREIGN KEY(conferentie_id) REFERENCES Conferentie,
+    FOREIGN KEY(conferentie_id) REFERENCES Conferentie
 );
 
 -- Relationship Data
@@ -222,6 +222,7 @@ INSERT INTO Onderzoekt VALUES (2, 2, 2021-10-17);
 INSERT INTO Werkt_Bij VALUES (1, 3, 2022-04-01);
 INSERT INTO Werkt_Bij VALUES (2, 1, 2018-09-01);
 INSERT INTO Werkt_Bij VALUES (3, 4, 2020-02-01);
+INSERT INTO Werkt_Bij VALUES (3, 2, 1980-01-01);
 INSERT INTO Werkt_Bij VALUES (4, 2, 2017-01-01);
 INSERT INTO Werkt_Bij VALUES (5, 5, 2023-07-01);
 
