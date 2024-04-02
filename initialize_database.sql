@@ -6,6 +6,8 @@ DROP TABLE IF EXISTS Onderzoeksgroep;
 DROP TABLE IF EXISTS Onderzoeker;
 DROP TABLE IF EXISTS Gast;
 DROP TABLE IF EXISTS Loondienst;
+DROP TABLE IF EXISTS Paper;
+DROP TABLE IF EXISTS Conferentie;
 
 DROP TABLE IF EXISTS Begeleidt;
 DROP TABLE IF EXISTS Onderzoekt;
@@ -13,7 +15,7 @@ DROP TABLE IF EXISTS Werkt_Bij;
 DROP TABLE IF EXISTS Hosts;
 DROP TABLE IF EXISTS Displays;
 DROP TABLE IF EXISTS Samenwerking;
-
+DROP TABLE IF EXISTS Geeft_Lezing;
 
 -- Entities
 CREATE TABLE Museumzaal (
@@ -47,6 +49,19 @@ CREATE TABLE Onderzoeker (
     naam VARCHAR,
     functie VARCHAR,
     PRIMARY KEY(onderzoeker_id)
+);
+
+CREATE TABLE Paper (
+    paper_id INTEGER,
+    naam VARCHAR,
+    PRIMARY KEY(paper_id)
+);
+
+CREATE TABLE Conferentie (
+    conferentie_id INTEGER,
+    naam VARCHAR,
+    stad VARCHAR,
+    PRIMARY KEY(conferentie_id)
 );
 
 CREATE TABLE Gast (
@@ -114,6 +129,18 @@ INSERT INTO Gast Values(4, 'Google', 'voltijd');
 INSERT INTO Onderzoeker VALUES (5, 'Ton de Winter', 'Gastonderzoeker');
 INSERT INTO Gast Values(5, 'University of Costa Rica', 'deeltijd');
 
+INSERT INTO Paper VALUES (1, 'Proteomics of Vertebrates');
+INSERT INTO Paper VALUES (2, 'Phytochemical Potential of Tropical Plants');
+INSERT INTO Paper VALUES (3, 'Essential Biodiversity Variables');
+INSERT INTO Paper VALUES (4, 'Exploring Molecular Biology in Sequence Space');
+INSERT INTO Paper VALUES (5, 'The Genomes of Livebearing Fish Species');
+
+INSERT INTO Conferentie VALUES (1, 'UN Biodiversity Conference', 'Montreal');
+INSERT INTO Conferentie VALUES (2, 'Essential Molecular Biology', 'Porto');
+INSERT INTO Conferentie VALUES (3, 'ESEB', 'Barcelona');
+INSERT INTO Conferentie VALUES (4, 'Life Science', 'Dublin');
+INSERT INTO Conferentie VALUES (5, 'Tropical Plant Expo', 'Miami');
+
 -- Relationships
 CREATE TABLE Begeleidt (
     onderzoeker_id INTEGER not NULL,
@@ -168,7 +195,18 @@ CREATE TABLE Samenwerking (
     FOREIGN KEY (groep2_id) REFERENCES Onderzoeksgroep(groep_id)
 );
 
--- Data
+CREATE TABLE Geeft_Lezing (
+    onderzoeker_id INTEGER,
+    paper_id INTEGER,
+    conferentie_id INTEGER,
+    datum DATE,
+    PRIMARY KEY(onderzoeker_id, paper_id, conferentie_id),
+    FOREIGN KEY(onderzoeker_id) REFERENCES Onderzoeker,
+    FOREIGN KEY(paper_id) REFERENCES Paper,
+    FOREIGN KEY(conferentie_id) REFERENCES Conferentie,
+);
+
+-- Relationship Data
 INSERT INTO Begeleidt VALUES (1, 1);
 INSERT INTO Begeleidt VALUES (2, 3);
 INSERT INTO Begeleidt VALUES (3, 5);
@@ -206,3 +244,9 @@ INSERT INTO Displays VALUES (5, 11, 2023-02-01, 2023-02-15);
 INSERT INTO Samenwerking VALUES (1, 5, 2022-04-08);
 INSERT INTO Samenwerking VALUES (1, 4, 2019-08-20);
 INSERT INTO Samenwerking VALUES (2, 5, 2021-01-16);
+
+INSERT INTO Geeft_Lezing VALUES (1, 2, 5, 2022-11-22);
+INSERT INTO Geeft_Lezing VALUES (2, 3, 1, 2023-12-18);
+INSERT INTO Geeft_Lezing VALUES (2, 5, 4, 2024-01-15);
+INSERT INTO Geeft_Lezing VALUES (3, 1, 3, 2018-06-01);
+INSERT INTO Geeft_Lezing VALUES (3, 4, 2, 2023-04-20);
